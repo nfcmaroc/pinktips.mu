@@ -1,4 +1,4 @@
-# Builds badge variants. python build_badge.py -> 1-badge-fan.svg, 1-badge-sparkle.svg
+# Builds badge variants. python build_badge.py -> 1-badge.svg (nail fan)
 NAIL = "M0,{t} C{a},{b} {c},{d} {c},{e} L{c},{f} Q{c},{g} 0,{g} Q{m},{g} {m},{f} L{m},{e} C{m},{d} {n},{b} 0,{t} Z"
 def nail(w, h, fill, hi=True):
     # almond press-on: pointed-round top, straight sides, rounded cuticle
@@ -14,8 +14,8 @@ fan_cols = ["#f3d3d9", "#eaa9b9", "#d46a86", "#eaa9b9", "#f3d3d9"]
 fan = "".join(f'<g transform="translate(500,400) rotate({a}) translate(0,-30)">{nail(64,150,c)}</g>' for a, c in zip([-40,-20,0,20,40], fan_cols))
 fan += sparkle(640, 215, 2.2) + sparkle(360, 250, 1.4)
 single = f'<g transform="translate(500,410) rotate(12)">{nail(120,270,"#d46a86")}</g>' + sparkle(600, 190, 3) + sparkle(395, 215, 1.8) + sparkle(615, 330, 1.3)
-for name, icon in [("fan", fan), ("sparkle", single)]:
-    open(f"1-badge-{name}.svg", "w").write(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+for name, icon in [("", fan)]:
+    open(f"1-badge{name}.svg", "w").write(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
 <circle cx="500" cy="500" r="500" fill="#1d1718"/>
 <circle cx="500" cy="500" r="470" fill="none" stroke="#e8b4c0" stroke-width="4"/>
 {icon}
