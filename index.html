@@ -99,6 +99,7 @@
   <ul id="lines"></ul>
   <p class="total"><span data-t="total"></span> <b id="total">Rs 0</b></p>
   <p class="fine" data-t="deliveryShort"></p>
+  <button id="keepShopping2" class="ghost-btn wide" type="button" data-t="keepShopping"></button>
   <form id="checkout">
     <label><span data-t="name"></span><input name="name" required autocomplete="name"></label>
     <label><span data-t="address"></span><textarea name="address" rows="2" required autocomplete="street-address"></textarea></label>
@@ -108,6 +109,15 @@
   </form>
 </aside>
 <div id="shade" class="shade" hidden></div>
+
+<div id="added" class="added" role="dialog" aria-live="polite" hidden>
+  <img id="addedImg" alt="" width="56" height="56">
+  <div class="added-txt"><b data-t="addedTitle"></b><span id="addedName"></span></div>
+  <div class="added-btns">
+    <button id="keepShopping" class="ghost-btn" type="button" data-t="keepShopping"></button>
+    <button id="goCheckout" class="btn" type="button" data-t="goCheckout"></button>
+  </div>
+</div>
 
 <script src="config.js"></script>
 <script src="app.js"></script>

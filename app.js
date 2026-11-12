@@ -16,6 +16,7 @@ const T = {
     msgHello: "Bonjour Pinktips ! Je voudrais commander :", msgDelivery: "Livraison", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adresse", msgPhone: "Téléphone",
     loadError: "Les produits n'ont pas pu être chargés. Rechargez la page dans un instant.",
+    addedTitle: "Ajouté au panier ✓", keepShopping: "Continuer mes achats", goCheckout: "Commander",
   },
   en: {
     bar: "Delivery all over Mauritius by La Poste · Pay with Juice",
@@ -34,6 +35,7 @@ const T = {
     msgHello: "Hello Pinktips! I would like to order:", msgDelivery: "Delivery", msgTotal: "Total",
     msgName: "Name", msgAddress: "Address", msgPhone: "Phone",
     loadError: "The products could not be loaded. Please reload the page in a moment.",
+    addedTitle: "Added to cart ✓", keepShopping: "Keep shopping", goCheckout: "Checkout",
   },
   cr: {
     bar: "Nou livre partou Moris par La Poste · Pey par Juice",
@@ -52,6 +54,7 @@ const T = {
     msgHello: "Bonzour Pinktips! Mo anvi komann:", msgDelivery: "Livrezon", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adres", msgPhone: "Telefonn",
     loadError: "Pa finn kapav sarz bann prodwi. Reesey dan enn ti moman.",
+    addedTitle: "Azoute dan panie ✓", keepShopping: "Kontinie aste", goCheckout: "Komande",
   },
 };
 
@@ -163,6 +166,22 @@ function reveal() {
   document.querySelectorAll(".card:not(.reveal), .banner:not(.reveal), .steps > div:not(.reveal)").forEach((el) => { el.classList.add("reveal"); seen.observe(el); });
 }
 
+// "added to cart" popup: keep shopping or go to checkout
+let addedTimer;
+function showAdded(p) {
+  $("#addedImg").src = img(p.photo, 120);
+  $("#addedName").textContent = p.name + (p.variant ? " · " + p.variant : "");
+  $("#added").hidden = false;
+  requestAnimationFrame(() => $("#added").classList.add("show"));
+  $("#count").parentElement.classList.remove("bump"); void $("#count").offsetWidth; $("#count").parentElement.classList.add("bump");
+  clearTimeout(addedTimer); addedTimer = setTimeout(hideAdded, 6000);
+}
+function hideAdded() {
+  clearTimeout(addedTimer);
+  $("#added").classList.remove("show");
+  setTimeout(() => ($("#added").hidden = true), 300);
+}
+
 function save() { localStorage.cart = JSON.stringify(cart); }
 function setOpen(open) { $("#cart").hidden = $("#shade").hidden = !open; document.body.classList.toggle("lock", open); }
 
@@ -177,14 +196,16 @@ function whatsappMessage(form) {
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.lang) { lang = localStorage.lang = b.dataset.lang; applyLang(); }
-  if (b.dataset.add) { const p = products[b.dataset.add]; cart[p.id] = Math.min((cart[p.id] || 0) + 1, p.stock); save(); renderCart(); setOpen(true); track("AddToCart", { content_name: p.name, value: p.price, currency: "MUR" }); }
+  if (b.dataset.add) { const p = products[b.dataset.add]; cart[p.id] = Math.min((cart[p.id] || 0) + 1, p.stock); save(); renderCart(); showAdded(p); track("AddToCart", { content_name: p.name, value: p.price, currency: "MUR" }); }
   if (b.dataset.inc) { const p = products.find((x) => x.id === b.dataset.inc); cart[p.id] = Math.min(cart[p.id] + 1, p.stock); save(); renderCart(); }
   if (b.dataset.dec) { if (--cart[b.dataset.dec] <= 0) delete cart[b.dataset.dec]; save(); renderCart(); }
   if (b.id === "openCart") { setOpen(true); track("InitiateCheckout"); }
-  if (b.id === "closeCart") setOpen(false);
+  if (b.id === "closeCart" || b.id === "keepShopping2") setOpen(false);
+  if (b.id === "keepShopping") hideAdded();
+  if (b.id === "goCheckout") { hideAdded(); setOpen(true); track("InitiateCheckout"); }
 });
 $("#shade").onclick = () => setOpen(false);
-document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
+document.addEventListener("keydown", (e) => e.key === "Escape" && (setOpen(false), hideAdded()));
 
 $("#checkout").addEventListener("submit", (e) => {
   e.preventDefault();
