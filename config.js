@@ -13,7 +13,7 @@ const CONFIG = {
   tiktok: "https://www.tiktok.com/@pink_tips_mrw",
 
   // Google script behind the hidden page /admin/ (Deploy > Web app URL). No password here.
-  adminApi: "",
+  adminApi: "https://script.google.com/macros/s/AKfycby4qYV-z_9E_zuGhOYw7QwCiBktzGXmmO_jtH1eJCgP6GGbIt9Kbel6x9-CegPtKplU/exec",
 
   // Tracking pixel IDs. Empty = pixel switched off.
   metaPixel: "",
