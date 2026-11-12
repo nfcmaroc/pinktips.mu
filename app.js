@@ -37,28 +37,9 @@ const T = {
     loadError: "The products could not be loaded. Please reload the page in a moment.",
     addedTitle: "Added to cart ✓", keepShopping: "Keep shopping", goCheckout: "Checkout",
   },
-  cr: {
-    bar: "Nou livre partou Moris par La Poste · Pran li Pamplemousses · Pey par Juice",
-    kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 1 minit",
-    shopNow: "Get koleksion la",
-    step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
-    navShop: "Koleksion", navHow: "Kouma komann", navAbout: "Nou zong", navContact: "Kontak",
-    shop: "Koleksion la", shopKicker: "Fer lamem, ar lamour",
-    ticker: ["Fer lamem", "Reitilizab", "Met an 1 minit", "Livrezon partou Moris", "Pran li Pamplemousses", "Pey par Juice"], add: "Azoute", soldOut: "Rupture de stock",
-    whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an 1 minit, tini plizier zour ek tir san abim ou vre zong.",
-    cart: "Ou panie", empty: "Ou panie vid.", total: "Total",
-    name: "Nom ek prenom", address: "Adres pou livre", phone: "Telefonn",
-    order: "Komann lor WhatsApp", payNote: "Nou konfirm lor WhatsApp, apre ou pey par Juice.",
-    delivery: "Nou livre par La Poste partou Moris, ouswa pran li gratis Pamplemousses. Pey par Juice apre konfirmasion lor WhatsApp.",
-    deliveryTbc: "pou konfirme", shipTitle: "Livrezon", shipPost: "Avoy par La Poste", shipPickup: "Pran li Pamplemousses", free: "Gratis", msgPickup: "Pran li Pamplemousses (gratis)",
-    msgHello: "Bonzour Pinktips! Mo anvi komann:", msgDelivery: "Livrezon", msgTotal: "Total",
-    msgName: "Nom", msgAddress: "Adres", msgPhone: "Telefonn",
-    loadError: "Pa finn kapav sarz bann prodwi. Reesey dan enn ti moman.",
-    addedTitle: "Azoute dan panie ✓", keepShopping: "Kontinie aste", goCheckout: "Komande",
-  },
 };
 
-let lang = localStorage.lang || "fr";
+let lang = T[localStorage.lang] ? localStorage.lang : "fr";
 let products = [];
 let cart = JSON.parse(localStorage.cart || "{}"); // { productId: qty }
 const $ = (s) => document.querySelector(s);
@@ -149,7 +130,7 @@ function renderCart() {
 }
 
 function applyLang() {
-  document.documentElement.lang = lang === "cr" ? "mfe" : lang;
+  document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
   document.querySelectorAll("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
   $("#shipPostPrice").textContent = CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery);

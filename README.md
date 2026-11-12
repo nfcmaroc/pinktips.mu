@@ -5,7 +5,7 @@ Shop site for Pink Tips, press-on nails in Mauritius. Live at **https://pinktips
 
 | File | What it is |
 |---|---|
-| `index.html`, `style.css`, `app.js` | The shop page: products, cart, WhatsApp order, FR / EN / KR |
+| `index.html`, `style.css`, `app.js` | The shop page: products, cart, WhatsApp order, FR / EN |
 | `config.js` | **The file you edit**: WhatsApp number, sheet link, delivery price, social links, admin script link, pixel IDs |
 | `admin/` | Hidden stock page (`/admin/`), password-protected. `Code.gs` is a copy of the Google script behind it |
 | `logo/` | Badge, wordmark, monogram, share picture; `logo/src/` rebuilds them |
