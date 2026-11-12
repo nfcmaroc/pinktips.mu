@@ -1,7 +1,7 @@
 const T = {
   fr: {
     bar: "Livraison partout à Maurice par La Poste · Paiement Juice",
-    kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon, posés en 5 minutes",
+    kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon, posés en 1 minute",
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
     shop: "La collection", add: "Ajouter", soldOut: "Rupture de stock",
@@ -16,7 +16,7 @@ const T = {
   },
   en: {
     bar: "Delivery all over Mauritius by La Poste · Pay with Juice",
-    kicker: "Press-on nails · Mauritius", title: "Salon nails, on in 5 minutes",
+    kicker: "Press-on nails · Mauritius", title: "Salon nails, on in 1 minute",
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
     shop: "The collection", add: "Add", soldOut: "Sold out",
@@ -31,7 +31,7 @@ const T = {
   },
   cr: {
     bar: "Nou livre partou Moris par La Poste · Pey par Juice",
-    kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 5 minit",
+    kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 1 minit",
     shopNow: "Get koleksion la",
     step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
     shop: "Koleksion la", add: "Azoute", soldOut: "Rupture de stock",

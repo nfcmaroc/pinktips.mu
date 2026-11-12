@@ -10,8 +10,8 @@ const CONFIG = {
   // Delivery price in rupees. null = "confirmed on WhatsApp".
   delivery: null,
 
-  instagram: "https://instagram.com/",
-  tiktok: "https://tiktok.com/",
+  instagram: "https://www.instagram.com/pinktips5/",
+  tiktok: "https://www.tiktok.com/@pink_tips_mrw",
 
   // Tracking pixel IDs. Empty = pixel switched off.
   metaPixel: "",
