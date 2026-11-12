@@ -125,7 +125,7 @@ function renderCart() {
       <div><b>${esc(p.name)}</b>${p.variant ? `<small>${esc(p.variant)}</small>` : ""}<span>${rs(p.price)}</span></div>
       <div class="qty"><button data-dec="${esc(p.id)}">−</button><span>${q}</span><button data-inc="${esc(p.id)}">+</button></div></li>`).join("")
     : `<li class="empty">${t("empty")}</li>`;
-  $("#total").textContent = rs(sub + (CONFIG.delivery || 0));
+  $("#total").textContent = rs(sub + (items.length ? CONFIG.delivery || 0 : 0));
   $("#order").disabled = !items.length;
   return { items, sub };
 }

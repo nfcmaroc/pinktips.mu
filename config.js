@@ -8,7 +8,7 @@ const CONFIG = {
   sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLQnA_5duc7-_dGZZolGJQxSU5iLbPzANWM4U1TrIar4Y_dYpGrtFqPxquzzRHjkPJc-4onin2RlgO/pub?output=csv",
 
   // Delivery price in rupees. null = "confirmed on WhatsApp".
-  delivery: null,
+  delivery: 100,
 
   instagram: "https://www.instagram.com/pinktips5/",
   tiktok: "https://www.tiktok.com/@pink_tips_mrw",
