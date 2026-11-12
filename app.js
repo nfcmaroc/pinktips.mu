@@ -197,3 +197,6 @@ $("#lnkIg").href = $("#hdrIg").href = CONFIG.instagram; $("#lnkTt").href = $("#h
 loadPixels();
 applyLang();
 loadProducts().then(applyLang).catch(() => ($("#grid").innerHTML = `<p class="load-error">${t("loadError")}</p>`));
+
+// smaller header once the visitor scrolls down
+addEventListener("scroll", () => $(".top").classList.toggle("small", scrollY > 60), { passive: true });

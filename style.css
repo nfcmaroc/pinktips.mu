@@ -123,3 +123,9 @@ main { text-align: center; }
 #checkout input, #checkout textarea { border-color: #ecd3d8; background: #fff; }
 #checkout input:focus, #checkout textarea:focus { outline: 2px solid var(--blush); border-color: var(--pink); }
 main, #how, #about, #contact { scroll-margin-top: calc(var(--hh) + 16px); }
+/* header shrinks once you scroll (height and negative margin move together, so nothing below jumps) */
+.top { transition: height .35s ease, margin-bottom .35s ease, background .35s ease; }
+.top .logo img { transition: width .35s ease, height .35s ease; }
+.top.small { height: 64px; margin-bottom: -64px; background: linear-gradient(180deg, rgba(255,246,247,.78), rgba(246,213,220,.55)); }
+.top.small .logo img { width: 52px; height: 52px; }
+@media (prefers-reduced-motion: reduce) { .top, .top .logo img { transition: none; } }
