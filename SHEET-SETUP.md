@@ -2,7 +2,8 @@
 
 Sheet: https://docs.google.com/spreadsheets/d/11_20pqwnLG5mVZGKGYvPq8C6FIa9RMfnBkROtVedLKY/edit
 
-It already has the 8 test products. Do these steps on a computer, in order.
+Steps 1 to 3 were done on 2026-11-12 (tab renamed "Stock", published as CSV, link in `config.js`).
+Only step 4 is left. The steps stay here in case you ever need to redo them.
 
 ## 1. Turn the Rupture column into tick boxes
 1. Click cell **F2**, scroll down, then hold **Shift** and click cell **F200**.
