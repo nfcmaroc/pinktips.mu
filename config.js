@@ -3,8 +3,7 @@ const CONFIG = {
   // Her WhatsApp number: country code 230 + number, digits only (no +, no spaces).
   whatsapp: "23058147634",
 
-  // Where the products come from. Leave "products.csv" for test products.
-  // Later: paste the Google Sheet "Publish to web > CSV" link here.
+  // Where the products come from: the Google Sheet "Pinktips - Stock", published as CSV.
   sheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLQnA_5duc7-_dGZZolGJQxSU5iLbPzANWM4U1TrIar4Y_dYpGrtFqPxquzzRHjkPJc-4onin2RlgO/pub?output=csv",
 
   // Delivery price in rupees. null = "confirmed on WhatsApp".

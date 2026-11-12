@@ -8,7 +8,6 @@ The shop website. Five files do everything:
 | `style.css` | Colours and layout |
 | `app.js` | Cart, language switch, WhatsApp message |
 | `config.js` | **The only file you edit**: WhatsApp number, Google Sheet link, delivery price, social links, pixel IDs |
-| `products.csv` | 8 test products. Replaced by the Google Sheet later |
 
 ## See it on your computer
 
@@ -25,6 +24,6 @@ One row per colour or shape. Stock 0 or Rupture ticked shows "Rupture de stock" 
 
 ## Photo and video credits
 
-Test pictures come from Unsplash (Unsplash License) and the hero video from Pexels
+Product photos are the Temu listing photos of the sets she sells (replace with her own when possible). The banner photo is from Unsplash (Unsplash License) and the hero video from Pexels
 (Pexels License, video 35050092). Both allow free commercial use without credit.
 They are loaded straight from their sites; replace them with her own photos when ready.
