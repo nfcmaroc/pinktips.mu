@@ -4,7 +4,8 @@ const T = {
     kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon, posés en 1 minute",
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
-    shop: "La collection", add: "Ajouter", soldOut: "Rupture de stock",
+    shop: "La collection", shopKicker: "Faits main, avec amour",
+    ticker: ["Faits main", "Réutilisables", "Posés en 1 minute", "Livraison partout à Maurice", "Paiement Juice"], add: "Ajouter", soldOut: "Rupture de stock",
     whyTitle: "Réutilisables, sans dégâts", whyText: "Nos press-on se posent en 1 minute, tiennent plusieurs jours et se retirent sans abîmer vos ongles.",
     cart: "Votre panier", empty: "Votre panier est vide.", total: "Total",
     name: "Nom et prénom", address: "Adresse de livraison", phone: "Téléphone",
@@ -20,7 +21,8 @@ const T = {
     kicker: "Press-on nails · Mauritius", title: "Salon nails, on in 1 minute",
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
-    shop: "The collection", add: "Add", soldOut: "Sold out",
+    shop: "The collection", shopKicker: "Handmade with love",
+    ticker: ["Handmade", "Reusable", "On in 1 minute", "Delivery all over Mauritius", "Pay with Juice"], add: "Add", soldOut: "Sold out",
     whyTitle: "Reusable, no damage", whyText: "Our press-ons go on in 1 minute, last for days and come off without hurting your natural nails.",
     cart: "Your cart", empty: "Your cart is empty.", total: "Total",
     name: "Full name", address: "Delivery address", phone: "Phone",
@@ -36,7 +38,8 @@ const T = {
     kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 1 minit",
     shopNow: "Get koleksion la",
     step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
-    shop: "Koleksion la", add: "Azoute", soldOut: "Rupture de stock",
+    shop: "Koleksion la", shopKicker: "Fer lamem, ar lamour",
+    ticker: ["Fer lamem", "Reitilizab", "Met an 1 minit", "Livrezon partou Moris", "Pey par Juice"], add: "Azoute", soldOut: "Rupture de stock",
     whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an 1 minit, tini plizier zour ek tir san abim ou vre zong.",
     cart: "Ou panie", empty: "Ou panie vid.", total: "Total",
     name: "Nom ek prenom", address: "Adres pou livre", phone: "Telefonn",
@@ -145,7 +148,16 @@ function applyLang() {
   document.querySelectorAll("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
   const d = $("[data-t=deliveryShort]");
   d.textContent += " : " + (CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery));
-  renderGrid(); renderCart();
+  // ticker: the list twice, so the scroll loops without a gap
+  $("#ticker").innerHTML = [...t("ticker"), ...t("ticker")].map((w) => `<span>${w}</span>`).join("");
+  renderGrid(); renderCart(); reveal();
+}
+
+// soft fade-in as sections scroll into view
+const seen = "IntersectionObserver" in window && new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), seen.unobserve(e.target))), { rootMargin: "0px 0px -8% 0px" });
+function reveal() {
+  if (!seen) return;
+  document.querySelectorAll(".card:not(.reveal), .banner:not(.reveal), .steps > div:not(.reveal)").forEach((el) => { el.classList.add("reveal"); seen.observe(el); });
 }
 
 function save() { localStorage.cart = JSON.stringify(cart); }
