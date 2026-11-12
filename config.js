@@ -1,7 +1,7 @@
 // Everything you may need to change lives in this one file.
 const CONFIG = {
-  // Your sister's WhatsApp Business number: country code 230 + number, digits only.
-  whatsapp: "23050000000",
+  // Her WhatsApp number: country code 230 + number, digits only (no +, no spaces).
+  whatsapp: "23058147634",
 
   // Where the products come from. Leave "products.csv" for test products.
   // Later: paste the Google Sheet "Publish to web > CSV" link here.
