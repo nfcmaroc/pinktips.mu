@@ -4,6 +4,7 @@ const T = {
     kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon, posés en 1 minute",
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
+    navShop: "Collection", navHow: "Comment commander", navAbout: "Nos ongles", navContact: "Contact",
     shop: "La collection", shopKicker: "Faits main, avec amour",
     ticker: ["Faits main", "Réutilisables", "Posés en 1 minute", "Livraison partout à Maurice", "Paiement Juice"], add: "Ajouter", soldOut: "Rupture de stock",
     whyTitle: "Réutilisables, sans dégâts", whyText: "Nos press-on se posent en 1 minute, tiennent plusieurs jours et se retirent sans abîmer vos ongles.",
@@ -21,6 +22,7 @@ const T = {
     kicker: "Press-on nails · Mauritius", title: "Salon nails, on in 1 minute",
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
+    navShop: "Shop", navHow: "How to order", navAbout: "Our nails", navContact: "Contact",
     shop: "The collection", shopKicker: "Handmade with love",
     ticker: ["Handmade", "Reusable", "On in 1 minute", "Delivery all over Mauritius", "Pay with Juice"], add: "Add", soldOut: "Sold out",
     whyTitle: "Reusable, no damage", whyText: "Our press-ons go on in 1 minute, last for days and come off without hurting your natural nails.",
@@ -38,6 +40,7 @@ const T = {
     kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 1 minit",
     shopNow: "Get koleksion la",
     step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
+    navShop: "Koleksion", navHow: "Kouma komann", navAbout: "Nou zong", navContact: "Kontak",
     shop: "Koleksion la", shopKicker: "Fer lamem, ar lamour",
     ticker: ["Fer lamem", "Reitilizab", "Met an 1 minit", "Livrezon partou Moris", "Pey par Juice"], add: "Azoute", soldOut: "Rupture de stock",
     whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an 1 minit, tini plizier zour ek tir san abim ou vre zong.",
@@ -190,7 +193,7 @@ $("#checkout").addEventListener("submit", (e) => {
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(whatsappMessage(e.target))}`, "_blank");
 });
 
-$("#lnkIg").href = CONFIG.instagram; $("#lnkTt").href = CONFIG.tiktok; $("#lnkWa").href = "https://wa.me/" + CONFIG.whatsapp;
+$("#lnkIg").href = $("#hdrIg").href = CONFIG.instagram; $("#lnkTt").href = $("#hdrTt").href = CONFIG.tiktok; $("#lnkWa").href = "https://wa.me/" + CONFIG.whatsapp;
 loadPixels();
 applyLang();
 loadProducts().then(applyLang).catch(() => ($("#grid").innerHTML = `<p class="load-error">${t("loadError")}</p>`));

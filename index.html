@@ -16,14 +16,22 @@
 <div class="bar" data-t="bar"></div>
 
 <header class="top">
-  <nav class="lang" aria-label="Langue">
-    <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="cr">KR</button>
-  </nav>
+  <div class="side">
+    <nav class="lang" aria-label="Langue">
+      <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="cr">KR</button>
+    </nav>
+    <nav class="links"><a href="#shop" data-t="navShop"></a><a href="#how" data-t="navHow"></a></nav>
+  </div>
   <a href="#" class="logo" aria-label="Pinktips.mu"><img src="logo/1-badge.svg" alt="Pink Tips, press-on nails Mauritius" width="88" height="88"></a>
+  <div class="side right">
+    <nav class="links"><a href="#about" data-t="navAbout"></a><a href="#contact" data-t="navContact"></a></nav>
+    <a class="icon" id="hdrIg" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a class="icon" id="hdrTt" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M16.6 3c.4 2.2 1.8 3.6 4 3.9v3.1c-1.5 0-2.8-.4-4-1.2v6.4a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v3.2a2.7 2.7 0 1 0 1.8 2.5V3h3.1Z"/></svg></a>
   <button class="cart-btn" id="openCart" aria-label="Panier">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
     <span id="count">0</span>
   </button>
+  </div>
 </header>
 
 <section class="hero">
@@ -39,7 +47,7 @@
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
-<section class="steps">
+<section class="steps" id="how">
   <div><b>1</b><span data-t="step1"></span></div>
   <div><b>2</b><span data-t="step2"></span></div>
   <div><b>3</b><span data-t="step3"></span></div>
@@ -52,12 +60,12 @@
   <div id="grid" class="grid"></div>
 </main>
 
-<section class="banner">
+<section class="banner" id="about">
   <img src="https://images.unsplash.com/photo-1696342003838-4a8f9f36588c?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy">
   <div><h2 data-t="whyTitle"></h2><p data-t="whyText"></p></div>
 </section>
 
-<footer>
+<footer id="contact">
   <img class="foot-logo" src="logo/1-badge.svg" alt="Pink Tips" width="96" height="96" loading="lazy">
   <p class="social">
     <a id="lnkIg" target="_blank" rel="noopener">Instagram</a>
