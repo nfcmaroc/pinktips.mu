@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pinktips · Gestion</title>
+<link rel="icon" href="../logo/1-badge.svg">
+<link rel="apple-touch-icon" href="../logo/icon-180.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+<section id="login" class="login">
+  <img src="../logo/1-badge.svg" alt="Pink Tips" width="120" height="120">
+  <h1>Espace gestion</h1>
+  <form id="loginForm">
+    <input id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password" required>
+    <button class="btn" type="submit">Entrer</button>
+    <p id="loginMsg" class="msg" role="alert"></p>
+  </form>
+</section>
+
+<section id="app" hidden>
+  <header class="ahead">
+    <img src="../logo/1-badge.svg" alt="" width="44" height="44">
+    <div><h1>Mes produits</h1><p id="summary"></p></div>
+    <button id="logout" class="ghost" type="button">Sortir</button>
+  </header>
+
+  <div class="tools">
+    <button id="addBtn" class="btn" type="button">+ Ajouter un produit</button>
+    <a class="ghost" href="../" target="_blank" rel="noopener">Voir le site</a>
+  </div>
+
+  <ul id="list" class="list"></ul>
+</section>
+
+<dialog id="editor">
+  <form id="editForm" method="dialog">
+    <h2 id="editTitle">Modifier</h2>
+    <label>Nom<input name="name" required></label>
+    <label>Variante (forme, longueur…)<input name="variant"></label>
+    <div class="two">
+      <label>Prix (Rs)<input name="price" type="number" min="0" inputmode="numeric" required></label>
+      <label>Stock<input name="stock" type="number" min="0" inputmode="numeric" required></label>
+    </div>
+    <label>Lien de la photo<input name="photo" type="url" placeholder="https://…"></label>
+    <img id="preview" alt="" hidden>
+    <div class="row-btns">
+      <button id="delBtn" class="danger" type="button">Supprimer</button>
+      <span></span>
+      <button class="ghost" value="cancel" formnovalidate>Annuler</button>
+      <button class="btn" id="saveBtn" value="save">Enregistrer</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script src="../config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

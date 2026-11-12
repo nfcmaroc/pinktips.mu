@@ -12,6 +12,9 @@ const CONFIG = {
   instagram: "https://www.instagram.com/pinktips5/",
   tiktok: "https://www.tiktok.com/@pink_tips_mrw",
 
+  // Google script behind the hidden page /admin/ (Deploy > Web app URL). No password here.
+  adminApi: "",
+
   // Tracking pixel IDs. Empty = pixel switched off.
   metaPixel: "",
   tiktokPixel: "",
