@@ -194,6 +194,13 @@ $("#checkout").addEventListener("submit", (e) => {
 });
 
 $("#lnkIg").href = $("#hdrIg").href = CONFIG.instagram; $("#lnkTt").href = $("#hdrTt").href = CONFIG.tiktok; $("#lnkWa").href = "https://wa.me/" + CONFIG.whatsapp;
+// computers get a sharper hero video (phones keep the light 0.8 MB one)
+if (matchMedia("(min-width: 900px)").matches) {
+  const v = $(".hero video");
+  v.poster = v.poster.replace("w=900", "w=1600");
+  v.querySelector("source").src = "https://videos.pexels.com/video-files/35050092/14847507_1080_1920_50fps.mp4";
+  v.load();
+}
 loadPixels();
 applyLang();
 loadProducts().then(applyLang).catch(() => ($("#grid").innerHTML = `<p class="load-error">${t("loadError")}</p>`));
