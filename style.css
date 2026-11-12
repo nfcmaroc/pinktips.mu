@@ -79,3 +79,5 @@ footer a { color: var(--ink); }
 #checkout .btn { margin-top: .6rem; }
 .top .logo img { width: 88px; height: 88px; }
 @media (min-width: 760px) { .top .logo img { width: 110px; height: 110px; } }
+.load-error { grid-column: 1 / -1; text-align: center; color: var(--muted); }
+.qty button:disabled { opacity: .3; cursor: default; }

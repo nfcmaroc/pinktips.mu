@@ -5,7 +5,7 @@ const T = {
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
     shop: "La collection", add: "Ajouter", soldOut: "Rupture de stock",
-    whyTitle: "Réutilisables, sans dégâts", whyText: "Nos press-on se posent en quelques minutes, tiennent plusieurs jours et se retirent sans abîmer vos ongles.",
+    whyTitle: "Réutilisables, sans dégâts", whyText: "Nos press-on se posent en 1 minute, tiennent plusieurs jours et se retirent sans abîmer vos ongles.",
     cart: "Votre panier", empty: "Votre panier est vide.", total: "Total",
     name: "Nom et prénom", address: "Adresse de livraison", phone: "Téléphone",
     order: "Commander sur WhatsApp", payNote: "Nous confirmons sur WhatsApp, puis vous payez par Juice.",
@@ -13,6 +13,7 @@ const T = {
     deliveryShort: "+ livraison La Poste", deliveryTbc: "à confirmer",
     msgHello: "Bonjour Pinktips ! Je voudrais commander :", msgDelivery: "Livraison", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adresse", msgPhone: "Téléphone",
+    loadError: "Les produits n'ont pas pu être chargés. Rechargez la page dans un instant.",
   },
   en: {
     bar: "Delivery all over Mauritius by La Poste · Pay with Juice",
@@ -20,7 +21,7 @@ const T = {
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
     shop: "The collection", add: "Add", soldOut: "Sold out",
-    whyTitle: "Reusable, no damage", whyText: "Our press-ons go on in minutes, last for days and come off without hurting your natural nails.",
+    whyTitle: "Reusable, no damage", whyText: "Our press-ons go on in 1 minute, last for days and come off without hurting your natural nails.",
     cart: "Your cart", empty: "Your cart is empty.", total: "Total",
     name: "Full name", address: "Delivery address", phone: "Phone",
     order: "Order on WhatsApp", payNote: "We confirm on WhatsApp, then you pay with Juice.",
@@ -28,6 +29,7 @@ const T = {
     deliveryShort: "+ La Poste delivery", deliveryTbc: "to be confirmed",
     msgHello: "Hello Pinktips! I would like to order:", msgDelivery: "Delivery", msgTotal: "Total",
     msgName: "Name", msgAddress: "Address", msgPhone: "Phone",
+    loadError: "The products could not be loaded. Please reload the page in a moment.",
   },
   cr: {
     bar: "Nou livre partou Moris par La Poste · Pey par Juice",
@@ -35,7 +37,7 @@ const T = {
     shopNow: "Get koleksion la",
     step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
     shop: "Koleksion la", add: "Azoute", soldOut: "Rupture de stock",
-    whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an enn de minit, tini plizier zour ek tir san abim ou vre zong.",
+    whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an 1 minit, tini plizier zour ek tir san abim ou vre zong.",
     cart: "Ou panie", empty: "Ou panie vid.", total: "Total",
     name: "Nom ek prenom", address: "Adres pou livre", phone: "Telefonn",
     order: "Komann lor WhatsApp", payNote: "Nou konfirm lor WhatsApp, apre ou pey par Juice.",
@@ -43,6 +45,7 @@ const T = {
     deliveryShort: "+ livrezon La Poste", deliveryTbc: "pou konfirme",
     msgHello: "Bonzour Pinktips! Mo anvi komann:", msgDelivery: "Livrezon", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adres", msgPhone: "Telefonn",
+    loadError: "Pa finn kapav sarz bann prodwi. Reesey dan enn ti moman.",
   },
 };
 
@@ -86,16 +89,22 @@ function parseCSV(text) {
 
 async function loadProducts() {
   const url = CONFIG.sheet + (CONFIG.sheet.includes("?") ? "&" : "?") + "t=" + Date.now(); // never show an old stock
-  const rows = parseCSV(await (await fetch(url)).text()).slice(1);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("sheet " + res.status);
+  const rows = parseCSV(await res.text()).slice(1);
   products = rows.map(([name, variant, price, photo, stock, rupture], i) => ({
     id: (name + "|" + variant).trim(),
     name: name.trim(), variant: (variant || "").trim(),
     price: parseInt(String(price).replace(/\D/g, "")) || 0,
     photo: (photo || "").trim(),
+    stock: parseInt(stock) || 0,
     soldOut: !(parseInt(stock) > 0) || /^(true|vrai|oui|x|1)$/i.test((rupture || "").trim()),
   })).filter((p) => p.name);
   // drop anything in the cart that vanished or sold out since last visit
-  for (const id in cart) if (!products.find((p) => p.id === id && !p.soldOut)) delete cart[id];
+  for (const id in cart) {
+    const p = products.find((x) => x.id === id && !x.soldOut);
+    if (!p) delete cart[id]; else cart[id] = Math.min(cart[id], p.stock);
+  }
   save();
 }
 
@@ -123,7 +132,7 @@ function renderCart() {
   $("#lines").innerHTML = items.length ? items.map(({ p, q }) => `
     <li><img src="${esc(img(p.photo, 120))}" alt="">
       <div><b>${esc(p.name)}</b>${p.variant ? `<small>${esc(p.variant)}</small>` : ""}<span>${rs(p.price)}</span></div>
-      <div class="qty"><button data-dec="${esc(p.id)}">−</button><span>${q}</span><button data-inc="${esc(p.id)}">+</button></div></li>`).join("")
+      <div class="qty"><button data-dec="${esc(p.id)}">−</button><span>${q}</span><button data-inc="${esc(p.id)}" ${q >= p.stock ? "disabled" : ""}>+</button></div></li>`).join("")
     : `<li class="empty">${t("empty")}</li>`;
   $("#total").textContent = rs(sub + (items.length ? CONFIG.delivery || 0 : 0));
   $("#order").disabled = !items.length;
@@ -153,13 +162,14 @@ function whatsappMessage(form) {
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.lang) { lang = localStorage.lang = b.dataset.lang; applyLang(); }
-  if (b.dataset.add) { const p = products[b.dataset.add]; cart[p.id] = (cart[p.id] || 0) + 1; save(); renderCart(); setOpen(true); track("AddToCart", { content_name: p.name, value: p.price, currency: "MUR" }); }
-  if (b.dataset.inc) { cart[b.dataset.inc]++; save(); renderCart(); }
+  if (b.dataset.add) { const p = products[b.dataset.add]; cart[p.id] = Math.min((cart[p.id] || 0) + 1, p.stock); save(); renderCart(); setOpen(true); track("AddToCart", { content_name: p.name, value: p.price, currency: "MUR" }); }
+  if (b.dataset.inc) { const p = products.find((x) => x.id === b.dataset.inc); cart[p.id] = Math.min(cart[p.id] + 1, p.stock); save(); renderCart(); }
   if (b.dataset.dec) { if (--cart[b.dataset.dec] <= 0) delete cart[b.dataset.dec]; save(); renderCart(); }
   if (b.id === "openCart") { setOpen(true); track("InitiateCheckout"); }
   if (b.id === "closeCart") setOpen(false);
 });
 $("#shade").onclick = () => setOpen(false);
+document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
 
 $("#checkout").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -171,4 +181,4 @@ $("#checkout").addEventListener("submit", (e) => {
 $("#lnkIg").href = CONFIG.instagram; $("#lnkTt").href = CONFIG.tiktok; $("#lnkWa").href = "https://wa.me/" + CONFIG.whatsapp;
 loadPixels();
 applyLang();
-loadProducts().then(applyLang).catch(() => ($("#grid").textContent = "…"));
+loadProducts().then(applyLang).catch(() => ($("#grid").innerHTML = `<p class="load-error">${t("loadError")}</p>`));
