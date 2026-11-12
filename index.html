@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pinktips.mu · Press-on nails à l'île Maurice</title>
+<meta name="description" content="Faux ongles press-on faits avec amour à l'île Maurice. Commandez sur WhatsApp, payez par Juice, livraison La Poste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bar" data-t="bar"></div>
+
+<header class="top">
+  <nav class="lang" aria-label="Langue">
+    <button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="cr">KR</button>
+  </nav>
+  <a href="#" class="logo" aria-label="Pinktips.mu">pink<em>tips</em><small>.mu</small></a>
+  <button class="cart-btn" id="openCart" aria-label="Panier">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    <span id="count">0</span>
+  </button>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop playsinline poster="https://images.pexels.com/videos/10609138/pexels-photo-10609138.jpeg?auto=compress&w=900">
+    <source src="https://videos.pexels.com/video-files/10609138/10609138-sd_506_960_25fps.mp4" type="video/mp4">
+  </video>
+  <div class="hero-text">
+    <p class="kicker" data-t="kicker"></p>
+    <h1 data-t="title"></h1>
+    <a href="#shop" class="btn" data-t="shopNow"></a>
+  </div>
+</section>
+
+<section class="steps">
+  <div><b>1</b><span data-t="step1"></span></div>
+  <div><b>2</b><span data-t="step2"></span></div>
+  <div><b>3</b><span data-t="step3"></span></div>
+</section>
+
+<main id="shop">
+  <h2 data-t="shop"></h2>
+  <div id="grid" class="grid"></div>
+</main>
+
+<section class="banner">
+  <img src="https://images.unsplash.com/photo-1696342003838-4a8f9f36588c?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy">
+  <div><h2 data-t="whyTitle"></h2><p data-t="whyText"></p></div>
+</section>
+
+<footer>
+  <p class="logo small">pink<em>tips</em><small>.mu</small></p>
+  <p class="social">
+    <a id="lnkIg" target="_blank" rel="noopener">Instagram</a> ·
+    <a id="lnkTt" target="_blank" rel="noopener">TikTok</a> ·
+    <a id="lnkWa" target="_blank" rel="noopener">WhatsApp</a>
+  </p>
+  <p class="fine" data-t="delivery"></p>
+  <p class="fine">Photos: Unsplash &amp; Pexels</p>
+</footer>
+
+<aside id="cart" class="cart" hidden>
+  <div class="cart-head"><h2 data-t="cart"></h2><button id="closeCart" aria-label="Fermer">×</button></div>
+  <ul id="lines"></ul>
+  <p class="total"><span data-t="total"></span> <b id="total">Rs 0</b></p>
+  <p class="fine" data-t="deliveryShort"></p>
+  <form id="checkout">
+    <label><span data-t="name"></span><input name="name" required autocomplete="name"></label>
+    <label><span data-t="address"></span><textarea name="address" rows="2" required autocomplete="street-address"></textarea></label>
+    <label><span data-t="phone"></span><input name="phone" type="tel" required autocomplete="tel" pattern="[0-9 +]{7,}"></label>
+    <button class="btn wa" id="order" type="submit" data-t="order"></button>
+    <p class="fine" data-t="payNote"></p>
+  </form>
+</aside>
+<div id="shade" class="shade" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
