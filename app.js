@@ -1,56 +1,56 @@
 const T = {
   fr: {
-    bar: "Livraison partout à Maurice par La Poste · Paiement Juice",
+    bar: "Livraison La Poste partout à Maurice · Retrait à Pamplemousses · Paiement Juice",
     kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon, posés en 1 minute",
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
     navShop: "Collection", navHow: "Comment commander", navAbout: "Nos ongles", navContact: "Contact",
     shop: "La collection", shopKicker: "Faits main, avec amour",
-    ticker: ["Faits main", "Réutilisables", "Posés en 1 minute", "Livraison partout à Maurice", "Paiement Juice"], add: "Ajouter", soldOut: "Rupture de stock",
+    ticker: ["Faits main", "Réutilisables", "Posés en 1 minute", "Livraison partout à Maurice", "Retrait à Pamplemousses", "Paiement Juice"], add: "Ajouter", soldOut: "Rupture de stock",
     whyTitle: "Réutilisables, sans dégâts", whyText: "Nos press-on se posent en 1 minute, tiennent plusieurs jours et se retirent sans abîmer vos ongles.",
     cart: "Votre panier", empty: "Votre panier est vide.", total: "Total",
     name: "Nom et prénom", address: "Adresse de livraison", phone: "Téléphone",
     order: "Commander sur WhatsApp", payNote: "Nous confirmons sur WhatsApp, puis vous payez par Juice.",
-    delivery: "Livraison par La Poste partout à Maurice. Paiement par Juice après confirmation sur WhatsApp.",
-    deliveryShort: "+ livraison La Poste", deliveryTbc: "à confirmer",
+    delivery: "Livraison par La Poste partout à Maurice, ou retrait gratuit à Pamplemousses. Paiement par Juice après confirmation sur WhatsApp.",
+    deliveryTbc: "à confirmer", shipTitle: "Livraison", shipPost: "Envoi La Poste", shipPickup: "Retrait à Pamplemousses", free: "Gratuit", msgPickup: "Retrait à Pamplemousses (gratuit)",
     msgHello: "Bonjour Pinktips ! Je voudrais commander :", msgDelivery: "Livraison", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adresse", msgPhone: "Téléphone",
     loadError: "Les produits n'ont pas pu être chargés. Rechargez la page dans un instant.",
     addedTitle: "Ajouté au panier ✓", keepShopping: "Continuer mes achats", goCheckout: "Commander",
   },
   en: {
-    bar: "Delivery all over Mauritius by La Poste · Pay with Juice",
+    bar: "La Poste delivery all over Mauritius · Pick-up in Pamplemousses · Pay with Juice",
     kicker: "Press-on nails · Mauritius", title: "Salon nails, on in 1 minute",
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
     navShop: "Shop", navHow: "How to order", navAbout: "Our nails", navContact: "Contact",
     shop: "The collection", shopKicker: "Handmade with love",
-    ticker: ["Handmade", "Reusable", "On in 1 minute", "Delivery all over Mauritius", "Pay with Juice"], add: "Add", soldOut: "Sold out",
+    ticker: ["Handmade", "Reusable", "On in 1 minute", "Delivery all over Mauritius", "Pick-up in Pamplemousses", "Pay with Juice"], add: "Add", soldOut: "Sold out",
     whyTitle: "Reusable, no damage", whyText: "Our press-ons go on in 1 minute, last for days and come off without hurting your natural nails.",
     cart: "Your cart", empty: "Your cart is empty.", total: "Total",
     name: "Full name", address: "Delivery address", phone: "Phone",
     order: "Order on WhatsApp", payNote: "We confirm on WhatsApp, then you pay with Juice.",
-    delivery: "Delivery by La Poste all over Mauritius. Pay with Juice after we confirm on WhatsApp.",
-    deliveryShort: "+ La Poste delivery", deliveryTbc: "to be confirmed",
+    delivery: "Delivery by La Poste all over Mauritius, or free pick-up in Pamplemousses. Pay with Juice after we confirm on WhatsApp.",
+    deliveryTbc: "to be confirmed", shipTitle: "Delivery", shipPost: "La Poste delivery", shipPickup: "Pick-up in Pamplemousses", free: "Free", msgPickup: "Pick-up in Pamplemousses (free)",
     msgHello: "Hello Pinktips! I would like to order:", msgDelivery: "Delivery", msgTotal: "Total",
     msgName: "Name", msgAddress: "Address", msgPhone: "Phone",
     loadError: "The products could not be loaded. Please reload the page in a moment.",
     addedTitle: "Added to cart ✓", keepShopping: "Keep shopping", goCheckout: "Checkout",
   },
   cr: {
-    bar: "Nou livre partou Moris par La Poste · Pey par Juice",
+    bar: "Nou livre partou Moris par La Poste · Pran li Pamplemousses · Pey par Juice",
     kicker: "Press-on nails · Moris", title: "Zong kouma dan salon, an 1 minit",
     shopNow: "Get koleksion la",
     step1: "Swazir ou zong", step2: "Komann lor WhatsApp", step3: "Pey par Juice, nou poste",
     navShop: "Koleksion", navHow: "Kouma komann", navAbout: "Nou zong", navContact: "Kontak",
     shop: "Koleksion la", shopKicker: "Fer lamem, ar lamour",
-    ticker: ["Fer lamem", "Reitilizab", "Met an 1 minit", "Livrezon partou Moris", "Pey par Juice"], add: "Azoute", soldOut: "Rupture de stock",
+    ticker: ["Fer lamem", "Reitilizab", "Met an 1 minit", "Livrezon partou Moris", "Pran li Pamplemousses", "Pey par Juice"], add: "Azoute", soldOut: "Rupture de stock",
     whyTitle: "Reitilizab, pa abim zong", whyText: "Nou press-on met an 1 minit, tini plizier zour ek tir san abim ou vre zong.",
     cart: "Ou panie", empty: "Ou panie vid.", total: "Total",
     name: "Nom ek prenom", address: "Adres pou livre", phone: "Telefonn",
     order: "Komann lor WhatsApp", payNote: "Nou konfirm lor WhatsApp, apre ou pey par Juice.",
-    delivery: "Nou livre par La Poste partou Moris. Pey par Juice apre konfirmasion lor WhatsApp.",
-    deliveryShort: "+ livrezon La Poste", deliveryTbc: "pou konfirme",
+    delivery: "Nou livre par La Poste partou Moris, ouswa pran li gratis Pamplemousses. Pey par Juice apre konfirmasion lor WhatsApp.",
+    deliveryTbc: "pou konfirme", shipTitle: "Livrezon", shipPost: "Avoy par La Poste", shipPickup: "Pran li Pamplemousses", free: "Gratis", msgPickup: "Pran li Pamplemousses (gratis)",
     msgHello: "Bonzour Pinktips! Mo anvi komann:", msgDelivery: "Livrezon", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adres", msgPhone: "Telefonn",
     loadError: "Pa finn kapav sarz bann prodwi. Reesey dan enn ti moman.",
@@ -143,7 +143,7 @@ function renderCart() {
       <div><b>${esc(p.name)}</b>${p.variant ? `<small>${esc(p.variant)}</small>` : ""}<span>${rs(p.price)}</span></div>
       <div class="qty"><button data-dec="${esc(p.id)}">−</button><span>${q}</span><button data-inc="${esc(p.id)}" ${q >= p.stock ? "disabled" : ""}>+</button></div></li>`).join("")
     : `<li class="empty">${t("empty")}</li>`;
-  $("#total").textContent = rs(sub + (items.length ? CONFIG.delivery || 0 : 0));
+  $("#total").textContent = rs(sub + (items.length ? fee() : 0));
   $("#order").disabled = !items.length;
   return { items, sub };
 }
@@ -152,8 +152,7 @@ function applyLang() {
   document.documentElement.lang = lang === "cr" ? "mfe" : lang;
   document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
   document.querySelectorAll("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === lang));
-  const d = $("[data-t=deliveryShort]");
-  d.textContent += " : " + (CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery));
+  $("#shipPostPrice").textContent = CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery);
   // ticker: the list twice, so the scroll loops without a gap
   $("#ticker").innerHTML = [...t("ticker"), ...t("ticker")].map((w) => `<span>${w}</span>`).join("");
   renderGrid(); renderCart(); reveal();
@@ -182,15 +181,25 @@ function hideAdded() {
   setTimeout(() => ($("#added").hidden = true), 300);
 }
 
+// delivery choice: La Poste (paid) or free pick-up; pick-up needs no address
+const pickup = () => $("input[name=ship]:checked").value === "pickup";
+const fee = () => (pickup() ? 0 : CONFIG.delivery || 0);
+document.addEventListener("change", (e) => {
+  if (e.target.name !== "ship") return;
+  $("#addressField").hidden = pickup();
+  $("#checkout").address.required = !pickup();
+  renderCart();
+});
+
 function save() { localStorage.cart = JSON.stringify(cart); }
 function setOpen(open) { $("#cart").hidden = $("#shade").hidden = !open; document.body.classList.toggle("lock", open); }
 
 function whatsappMessage(form) {
   const { items, sub } = renderCart();
   const lines = items.map(({ p, q }) => `• ${q} × ${p.name}${p.variant ? " (" + p.variant + ")" : ""} – ${rs(p.price)} = ${rs(p.price * q)}`);
-  const deliv = CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery);
-  return [t("msgHello"), "", ...lines, "", `${t("msgDelivery")} : ${deliv}`, `*${t("msgTotal")} : ${rs(sub + (CONFIG.delivery || 0))}*`, "",
-    `${t("msgName")} : ${form.name.value.trim()}`, `${t("msgAddress")} : ${form.address.value.trim()}`, `${t("msgPhone")} : ${form.phone.value.trim()}`].join("\n");
+  const deliv = pickup() ? t("msgPickup") : `${t("shipPost")} ${CONFIG.delivery == null ? t("deliveryTbc") : rs(CONFIG.delivery)}`;
+  return [t("msgHello"), "", ...lines, "", `${t("msgDelivery")} : ${deliv}`, `*${t("msgTotal")} : ${rs(sub + fee())}*`, "",
+    `${t("msgName")} : ${form.name.value.trim()}`, ...(pickup() ? [] : [`${t("msgAddress")} : ${form.address.value.trim()}`]), `${t("msgPhone")} : ${form.phone.value.trim()}`].join("\n");
 }
 
 document.addEventListener("click", (e) => {

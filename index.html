@@ -97,12 +97,16 @@
 <aside id="cart" class="cart" hidden>
   <div class="cart-head"><h2 data-t="cart"></h2><button id="closeCart" aria-label="Fermer">×</button></div>
   <ul id="lines"></ul>
+  <fieldset class="ship">
+    <legend data-t="shipTitle"></legend>
+    <label><input type="radio" name="ship" value="post" checked><span data-t="shipPost"></span><b id="shipPostPrice"></b></label>
+    <label><input type="radio" name="ship" value="pickup"><span data-t="shipPickup"></span><b data-t="free"></b></label>
+  </fieldset>
   <p class="total"><span data-t="total"></span> <b id="total">Rs 0</b></p>
-  <p class="fine" data-t="deliveryShort"></p>
   <button id="keepShopping2" class="ghost-btn wide" type="button" data-t="keepShopping"></button>
   <form id="checkout">
     <label><span data-t="name"></span><input name="name" required autocomplete="name"></label>
-    <label><span data-t="address"></span><textarea name="address" rows="2" required autocomplete="street-address"></textarea></label>
+    <label id="addressField"><span data-t="address"></span><textarea name="address" rows="2" required autocomplete="street-address"></textarea></label>
     <label><span data-t="phone"></span><input name="phone" type="tel" required autocomplete="tel" pattern="[0-9 +]{7,}"></label>
     <button class="btn wa" id="order" type="submit" data-t="order"></button>
     <p class="fine" data-t="payNote"></p>

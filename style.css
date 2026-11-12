@@ -148,3 +148,13 @@ main, #how, #about, #contact { scroll-margin-top: calc(var(--hh) + 16px); }
 @media (prefers-reduced-motion: reduce) { .added { transition: none; } }
 .cart-btn.bump span { animation: bump .4s ease; }
 @keyframes bump { 50% { transform: scale(1.4); } }
+
+/* delivery choice in the cart */
+.ship { border: 0; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; }
+.ship legend { font-size: .82rem; color: var(--muted); margin-bottom: .4rem; }
+.ship label { display: flex; align-items: center; gap: .6rem; padding: .75rem .9rem; border: 1px solid #ecd3d8; border-radius: 12px; background: #fff; cursor: pointer; font-size: .9rem; }
+.ship label:has(input:checked) { border-color: var(--pink); background: var(--petal); box-shadow: 0 0 0 1px var(--pink) inset; }
+.ship input { accent-color: var(--pink); width: 18px; height: 18px; margin: 0; }
+.ship span { flex: 1; }
+.ship b { font-weight: 500; color: var(--rose); font-variant-numeric: lining-nums; }
+#addressField[hidden] { display: none; }
