@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<circle cx="500" cy="500" r="500" fill="#1d1718"/>
+<circle cx="500" cy="500" r="470" fill="none" stroke="#e8b4c0" stroke-width="4"/>
+<g transform="translate(500,410) rotate(12)"><path d="M0,-270 C57.0,-261.9 60.0,-167.4 60.0,-121.5 L60.0,-36.0 Q60.0,0 0,0 Q-60.0,0 -60.0,-36.0 L-60.0,-121.5 C-60.0,-167.4 -57.0,-261.9 0,-270 Z" fill="#d46a86"/><path d="M-21.0,-194.4 Q-30.0,-121.5 -24.0,-59.4" stroke="#fff" stroke-width="10.799999999999999" fill="none" stroke-linecap="round" opacity=".75"/></g><path transform="translate(600,190) scale(3)" d="M0,-10 Q1,-1 10,0 Q1,1 0,10 Q-1,1 -10,0 Q-1,-1 0,-10 Z" fill="#f7efe9"/><path transform="translate(395,215) scale(1.8)" d="M0,-10 Q1,-1 10,0 Q1,1 0,10 Q-1,1 -10,0 Q-1,-1 0,-10 Z" fill="#f7efe9"/><path transform="translate(615,330) scale(1.3)" d="M0,-10 Q1,-1 10,0 Q1,1 0,10 Q-1,1 -10,0 Q-1,-1 0,-10 Z" fill="#f7efe9"/>
+<text x="500" y="625" text-anchor="middle" font-family="Kunstler Script" font-size="250" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round">Pink Tips</text>
+<text x="500" y="740" text-anchor="middle" font-family="Bodoni MT" font-weight="bold" font-size="46" letter-spacing="10" fill="#e8b4c0">PRESS-ON NAILS</text>
+<text x="500" y="810" text-anchor="middle" font-family="Bodoni MT" font-weight="bold" font-size="32" letter-spacing="8" fill="#f7efe9">MAURITIUS</text>
+</svg>
