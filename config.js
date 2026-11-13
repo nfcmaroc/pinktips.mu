@@ -16,6 +16,9 @@ const CONFIG = {
   adminApi: "https://script.google.com/macros/s/AKfycby4qYV-z_9E_zuGhOYw7QwCiBktzGXmmO_jtH1eJCgP6GGbIt9Kbel6x9-CegPtKplU/exec",
 
   // Tracking pixel IDs. Empty = pixel switched off.
+  // Google Analytics 4 Measurement ID (analytics.google.com > Admin > Data streams). Empty = off.
+  analytics: "G-3HSSHNN15C",
+
   metaPixel: "",
   tiktokPixel: "",
 };

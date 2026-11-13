@@ -50,8 +50,20 @@ const t = (k) => T[lang][k];
 function track(event, data = {}) {
   if (window.fbq) fbq(["PageView", "ViewContent", "AddToCart", "InitiateCheckout"].includes(event) ? "track" : "trackCustom", event, data);
   if (window.ttq) ttq.track(event, data);
+  if (window.gtag) {
+    const ga = { AddToCart: "add_to_cart", InitiateCheckout: "begin_checkout" }[event] || event;
+    gtag("event", ga, { currency: data.currency, value: data.value });
+  }
 }
 function loadPixels() {
+  if (CONFIG.analytics) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date()); gtag("config", CONFIG.analytics);
+    const s = document.createElement("script"); s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + CONFIG.analytics;
+    document.head.appendChild(s);
+  }
   if (CONFIG.metaPixel) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq("init", CONFIG.metaPixel); fbq("track", "PageView");
