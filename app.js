@@ -16,7 +16,7 @@ const T = {
     msgHello: "Bonjour Pinktips ! Je voudrais commander :", msgDelivery: "Livraison", msgTotal: "Total",
     msgName: "Nom", msgAddress: "Adresse", msgPhone: "Téléphone",
     loadError: "Les produits n'ont pas pu être chargés. Rechargez la page dans un instant.",
-    addedTitle: "Ajouté au panier ✓", keepShopping: "Continuer mes achats", goCheckout: "Commander",
+    returns: "Retours et échanges", addedTitle: "Ajouté au panier ✓", keepShopping: "Continuer mes achats", goCheckout: "Commander",
   },
   en: {
     bar: "La Poste delivery all over Mauritius · Pick-up in Pamplemousses · Pay with Juice",
@@ -35,7 +35,7 @@ const T = {
     msgHello: "Hello Pinktips! I would like to order:", msgDelivery: "Delivery", msgTotal: "Total",
     msgName: "Name", msgAddress: "Address", msgPhone: "Phone",
     loadError: "The products could not be loaded. Please reload the page in a moment.",
-    addedTitle: "Added to cart ✓", keepShopping: "Keep shopping", goCheckout: "Checkout",
+    returns: "Returns and exchanges", addedTitle: "Added to cart ✓", keepShopping: "Keep shopping", goCheckout: "Checkout",
   },
 };
 

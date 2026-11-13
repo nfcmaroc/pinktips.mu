@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retours et échanges · Pink Tips</title>
+<meta name="description" content="Politique de retours et d'échanges de Pink Tips, press-on nails à l'île Maurice.">
+<link rel="canonical" href="https://pinktips.mu/retours/">
+<meta name="theme-color" content="#f6d5dc">
+<link rel="icon" href="../logo/1-badge.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="doc">
+<a class="back" href="../">← Pink Tips</a>
+<main class="paper">
+  <img src="../logo/1-badge.svg" alt="Pink Tips" width="88" height="88">
+  <section lang="fr" data-l="fr">
+    <h1>Retours et échanges</h1>
+    <p>Chaque set Pink Tips est fait main. Pour des raisons d'hygiène, <b>nous n'acceptons ni retours ni échanges</b>.</p>
+    <p>Merci de bien vérifier la forme, la longueur et la couleur avant de commander. Pour toute question sur un produit ou une commande, écrivez-nous sur WhatsApp avant de commander.</p>
+    <h2>Livraison</h2>
+    <p>Envoi par La Poste partout à Maurice (Rs 100) ou retrait gratuit à Pamplemousses. Paiement par Juice après confirmation sur WhatsApp.</p>
+  </section>
+  <section lang="en" data-l="en" hidden>
+    <h1>Returns and exchanges</h1>
+    <p>Every Pink Tips set is handmade. For hygiene reasons, <b>we do not accept returns or exchanges</b>.</p>
+    <p>Please check the shape, length and colour carefully before ordering. If you have any question about a product or an order, message us on WhatsApp before you order.</p>
+    <h2>Delivery</h2>
+    <p>Shipped by La Poste all over Mauritius (Rs 100) or free pick-up in Pamplemousses. Payment by Juice after confirmation on WhatsApp.</p>
+  </section>
+  <p class="langs"><button data-lang="fr">FR</button> · <button data-lang="en">EN</button></p>
+</main>
+<script>
+  const show = (l) => { localStorage.lang = l; document.documentElement.lang = l; document.querySelectorAll("[data-l]").forEach((s) => (s.hidden = s.dataset.l !== l)); };
+  document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => show(b.dataset.lang)));
+  show(localStorage.lang === "en" ? "en" : "fr");
+</script>
+</body>
+</html>
