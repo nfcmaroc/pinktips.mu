@@ -113,12 +113,16 @@ async function loadProducts() {
 function img(url, w) {
   return url.includes("images.unsplash.com") ? `${url}${url.includes("?") ? "&" : "?"}auto=format&fit=crop&w=${w}&h=${Math.round(w * 1.25)}&q=70` : url;
 }
+// local product photos exist in two WebP sizes (name-400.webp, name-800.webp); any other photo URL is used as it is
+const LOCAL = /\/img\/products\/([^/]+)\.jpg$/;
+function small(url) { const m = url.match(LOCAL); return m ? `img/products/${m[1]}-400.webp` : img(url, 400); }
+function srcset(url) { const m = url.match(LOCAL); return m ? ` srcset="img/products/${m[1]}-400.webp 400w, img/products/${m[1]}-800.webp 800w" sizes="(min-width: 760px) 25vw, 50vw"` : ""; }
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function renderGrid() {
   $("#grid").innerHTML = products.map((p, i) => `
     <article class="card${p.soldOut ? " out" : ""}">
-      <div class="pic"><img src="${esc(img(p.photo, 600))}" alt="${esc(p.name)}" loading="lazy">
+      <div class="pic"><img src="${esc(small(p.photo))}"${srcset(p.photo)} width="400" height="400" alt="${esc(p.name)}" loading="lazy" decoding="async">
         ${p.soldOut ? `<span class="ribbon">${t("soldOut")}</span>` : ""}</div>
       <h3>${esc(p.name)}</h3>
       ${p.variant ? `<p class="variant">${esc(p.variant)}</p>` : ""}
@@ -132,7 +136,7 @@ function renderCart() {
   const sub = items.reduce((s, x) => s + x.p.price * x.q, 0);
   $("#count").textContent = items.reduce((s, x) => s + x.q, 0);
   $("#lines").innerHTML = items.length ? items.map(({ p, q }) => `
-    <li><img src="${esc(img(p.photo, 120))}" alt="">
+    <li><img src="${esc(small(p.photo))}" width="60" height="60" alt="">
       <div><b>${esc(p.name)}</b>${p.variant ? `<small>${esc(p.variant)}</small>` : ""}<span>${rs(p.price)}</span></div>
       <div class="qty"><button data-dec="${esc(p.id)}">−</button><span>${q}</span><button data-inc="${esc(p.id)}" ${q >= p.stock ? "disabled" : ""}>+</button></div></li>`).join("")
     : `<li class="empty">${t("empty")}</li>`;
@@ -161,7 +165,7 @@ function reveal() {
 // "added to cart" popup: keep shopping or go to checkout
 let addedTimer;
 function showAdded(p) {
-  $("#addedImg").src = img(p.photo, 120);
+  $("#addedImg").src = small(p.photo);
   $("#addedName").textContent = p.name + (p.variant ? " · " + p.variant : "");
   $("#added").hidden = false;
   requestAnimationFrame(() => $("#added").classList.add("show"));
@@ -217,16 +221,23 @@ $("#checkout").addEventListener("submit", (e) => {
 });
 
 $("#lnkIg").href = $("#hdrIg").href = CONFIG.instagram; $("#lnkTt").href = $("#hdrTt").href = CONFIG.tiktok; $("#lnkWa").href = "https://wa.me/" + CONFIG.whatsapp;
-// computers get a sharper hero video (phones keep the light 0.8 MB one)
-if (matchMedia("(min-width: 900px)").matches) {
-  const v = $(".hero video");
-  v.poster = v.poster.replace("w=900", "w=1600");
-  v.querySelector("source").src = "https://videos.pexels.com/video-files/35050092/14847507_1080_1920_50fps.mp4";
-  v.load();
-}
-loadPixels();
 applyLang();
 loadProducts().then(applyLang).catch(() => ($("#grid").innerHTML = `<p class="load-error">${t("loadError")}</p>`));
 
 // smaller header once the visitor scrolls down
 addEventListener("scroll", () => $(".top").classList.toggle("small", scrollY > 60), { passive: true });
+
+// Performance: the page is fully usable from the local hero image. The video and the tracking scripts
+// start only after the page has loaded, and the tracking ones also on the first tap or scroll.
+function afterLoad(fn, ms) { addEventListener("load", () => setTimeout(fn, ms)); }
+afterLoad(() => {
+  const v = $("#heroVideo"), net = navigator.connection || {};
+  if (!v || net.saveData || /(^|-)2g$/.test(net.effectiveType || "")) return;
+  // computers get the sharper 1080p file, phones the light 0.8 MB one
+  v.src = "https://videos.pexels.com/video-files/35050092/" + (matchMedia("(min-width: 900px)").matches ? "14847507_1080_1920" : "14847490_540_960") + "_50fps.mp4";
+  v.play().then(() => v.classList.add("on")).catch(() => {});
+}, 1500);
+let pixelsOn = false;
+const startPixels = () => { if (!pixelsOn) { pixelsOn = true; loadPixels(); } };
+["pointerdown", "keydown", "scroll", "touchstart"].forEach((e) => addEventListener(e, startPixels, { once: true, passive: true }));
+afterLoad(startPixels, 4000);

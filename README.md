@@ -6,6 +6,8 @@ Shop site for Pink Tips, press-on nails in Mauritius. Live at **https://pinktips
 | File | What it is |
 |---|---|
 | `index.html`, `style.css`, `app.js` | The shop page: products, cart, WhatsApp order, FR / EN |
+| `build.py` | Run `python build.py` after editing `style.css`: it copies the CSS into `index.html` (faster first paint) |
+| `fonts/`, `img/` | Self-hosted fonts, hero image, banner and product photos (each product photo has `-400.webp` and `-800.webp` copies) |
 | `config.js` | **The file you edit**: WhatsApp number, sheet link, delivery price, social links, admin script link, pixel IDs |
 | `admin/` | Hidden stock page (`/admin/`), password-protected. `Code.gs` is a copy of the Google script behind it |
 | `logo/` | Badge, wordmark, monogram, share picture; `logo/src/` rebuilds them |
