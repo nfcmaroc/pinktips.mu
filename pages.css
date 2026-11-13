@@ -48,3 +48,5 @@ body.pg { background: var(--petal); color: var(--ink); }
 .pfoot nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .2rem 1.2rem; margin: 1rem 0; }
 .pfoot a { color: var(--rose-text); padding: .5rem 0; }
 .pfoot p { margin: .4rem 0; font-size: .8rem; color: var(--muted); }
+/* phones: menu always on its own row, two lines tall, so the font swap cannot move the page (CLS) */
+@media (max-width: 759px) { .phead nav { flex: 0 0 100%; min-height: 4.8rem; align-content: flex-start; } }
