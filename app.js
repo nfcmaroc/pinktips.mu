@@ -165,7 +165,7 @@ function reveal() {
 // "added to cart" popup: keep shopping or go to checkout
 let addedTimer;
 function showAdded(p) {
-  $("#addedImg").src = small(p.photo);
+  $("#addedImg").src = small(p.photo); $("#addedImg").alt = p.name;
   $("#addedName").textContent = p.name + (p.variant ? " · " + p.variant : "");
   $("#added").hidden = false;
   requestAnimationFrame(() => $("#added").classList.add("show"));
