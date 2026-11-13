@@ -46,7 +46,8 @@ button { font: inherit; cursor: pointer; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(120,40,62,.7), rgba(120,40,62,0) 62%); }
 .hero-text { position: absolute; z-index: 1; left: 0; right: 0; bottom: 2.5rem; text-align: center; color: #fff; padding: 0 1.5rem; }
 .kicker { text-transform: uppercase; letter-spacing: .2em; font-size: .75rem; margin: 0 0 .5rem; }
-.hero h1 { font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1.05; margin-bottom: 1.3rem; }
+/* two fixed lines that always fit, so the headline can never re-wrap when the real font arrives */
+.hero h1 { font-size: clamp(1.75rem, 9.2vw, 4rem); line-height: 1.05; margin-bottom: 1.3rem; white-space: pre; }
 
 .btn { display: inline-block; border: 1px solid var(--rose); background: var(--rose); transition: background .25s, color .25s, border-color .25s; color: #fff; padding: .85rem 2rem; border-radius: 999px; text-decoration: none; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
 .hero .btn { background: #fff; color: var(--rose-text); border-color: #fff; }
