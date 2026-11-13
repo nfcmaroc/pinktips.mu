@@ -1,9 +1,13 @@
 @font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 300 700; font-display: swap; src: url(fonts/cormorant-garamond.woff2) format("woff2"); }
 @font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap; src: url(fonts/cormorant-garamond-italic.woff2) format("woff2"); }
 @font-face { font-family: "Jost"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/jost.woff2) format("woff2"); }
-:root { --cream: #fcefef; --blush: #f6d5dc; --petal: #fff6f7; --pink: #d46a86; --rose: #b8506d; --ink: #2a1e21; --muted: #6e5a5f; --rose-text: #9c3a56; --serif: "Cormorant Garamond", Georgia, serif; }
+/* fallback fonts scaled to the real fonts' widths, so nothing moves when the real fonts arrive */
+@font-face { font-family: "Jost Fallback"; src: local("Arial"), local("Liberation Sans"), local("Helvetica"); size-adjust: 93.2%; ascent-override: 114.8%; descent-override: 40.2%; line-gap-override: 0%; }
+@font-face { font-family: "Cormorant Fallback"; font-style: normal; src: local("Times New Roman"), local("Liberation Serif"), local("Times"); size-adjust: 97.5%; ascent-override: 94.8%; descent-override: 29.4%; line-gap-override: 0%; }
+@font-face { font-family: "Cormorant Fallback"; font-style: italic; src: local("Times New Roman Italic"), local("Liberation Serif Italic"), local("Times Italic"); size-adjust: 88.7%; ascent-override: 104.2%; descent-override: 32.4%; line-gap-override: 0%; }
+:root { --cream: #fcefef; --blush: #f6d5dc; --petal: #fff6f7; --pink: #d46a86; --rose: #b8506d; --ink: #2a1e21; --muted: #6e5a5f; --rose-text: #9c3a56; --serif: "Cormorant Garamond", "Cormorant Fallback", Georgia, serif; }
 * { box-sizing: border-box; }
-body { margin: 0; font: 400 16px/1.5 "Jost", system-ui, sans-serif; color: var(--ink); background: var(--petal); }
+body { margin: 0; font: 400 16px/1.5 "Jost", "Jost Fallback", system-ui, sans-serif; color: var(--ink); background: var(--petal); }
 body.lock { overflow: hidden; }
 img { display: block; max-width: 100%; }
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0; font-variant-numeric: lining-nums; }
