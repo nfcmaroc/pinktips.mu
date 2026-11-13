@@ -1,7 +1,7 @@
 const T = {
   fr: {
     bar: "Livraison La Poste partout à Maurice · Retrait à Pamplemousses · Paiement Juice",
-    kicker: "Press-on nails · Île Maurice", title: "Des ongles de salon,\nposés en 1\u00a0minute",
+    kicker: "Posés en 1\u00a0minute · Réutilisables", title: "Faux ongles press-on,\nfaits main à Maurice",
     shopNow: "Voir la collection",
     step1: "Choisissez vos ongles", step2: "Commandez sur WhatsApp", step3: "Payez par Juice, on poste",
     navShop: "Collection", navHow: "Comment commander", navAbout: "Nos ongles", navContact: "Contact",
@@ -20,7 +20,7 @@ const T = {
   },
   en: {
     bar: "La Poste delivery all over Mauritius · Pick-up in Pamplemousses · Pay with Juice",
-    kicker: "Press-on nails · Mauritius", title: "Salon nails,\non in 1\u00a0minute",
+    kicker: "On in 1\u00a0minute · Reusable", title: "Press-on nails,\nmade in Mauritius",
     shopNow: "Shop the collection",
     step1: "Pick your nails", step2: "Order on WhatsApp", step3: "Pay with Juice, we post",
     navShop: "Shop", navHow: "How to order", navAbout: "Our nails", navContact: "Contact",
@@ -117,6 +117,8 @@ function img(url, w) {
 const LOCAL = /\/img\/products\/([^/]+)\.jpg$/;
 function small(url) { const m = url.match(LOCAL); return m ? `img/products/${m[1]}-400.webp` : img(url, 400); }
 function srcset(url) { const m = url.match(LOCAL); return m ? ` srcset="img/products/${m[1]}-400.webp 400w, img/products/${m[1]}-800.webp 800w" sizes="(min-width: 760px) 25vw, 50vw"` : ""; }
+const slug = (s) => s.toLowerCase().replace(/œ/g, "oe").replace(/&/g, "et").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const pageOf = (p) => "p/" + slug(p.name + " " + p.variant) + "/";
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function renderGrid() {
@@ -124,7 +126,7 @@ function renderGrid() {
     <article class="card${p.soldOut ? " out" : ""}">
       <div class="pic"><img src="${esc(small(p.photo))}"${srcset(p.photo)} width="400" height="400" alt="${esc(p.name)}" loading="lazy" decoding="async">
         ${p.soldOut ? `<span class="ribbon">${t("soldOut")}</span>` : ""}</div>
-      <h3>${esc(p.name)}</h3>
+      <h3><a href="${pageOf(p)}">${esc(p.name)}</a></h3>
       ${p.variant ? `<p class="variant">${esc(p.variant)}</p>` : ""}
       <p class="price">${rs(p.price)}</p>
       <button class="btn small" data-add="${i}" ${p.soldOut ? "disabled" : ""}>${p.soldOut ? t("soldOut") : t("add")}</button>

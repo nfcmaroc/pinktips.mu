@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://pinktips.mu/</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://pinktips.mu/retours/</loc></url>
+  <url><loc>https://pinktips.mu/faux-ongles-maurice/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://pinktips.mu/faux-ongles-maurice/"/><xhtml:link rel="alternate" hreflang="en" href="https://pinktips.mu/en/press-on-nails-mauritius/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://pinktips.mu/faux-ongles-maurice/"/></url>
+  <url><loc>https://pinktips.mu/en/press-on-nails-mauritius/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://pinktips.mu/faux-ongles-maurice/"/><xhtml:link rel="alternate" hreflang="en" href="https://pinktips.mu/en/press-on-nails-mauritius/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://pinktips.mu/faux-ongles-maurice/"/></url>
+  <url><loc>https://pinktips.mu/faux-ongles-pieds-maurice/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://pinktips.mu/faux-ongles-pieds-maurice/"/><xhtml:link rel="alternate" hreflang="en" href="https://pinktips.mu/en/press-on-toenails-mauritius/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://pinktips.mu/faux-ongles-pieds-maurice/"/></url>
+  <url><loc>https://pinktips.mu/en/press-on-toenails-mauritius/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://pinktips.mu/faux-ongles-pieds-maurice/"/><xhtml:link rel="alternate" hreflang="en" href="https://pinktips.mu/en/press-on-toenails-mauritius/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://pinktips.mu/faux-ongles-pieds-maurice/"/></url>
+  <url><loc>https://pinktips.mu/p/french-oeil-de-chat-ovale-court/</loc></url>
+  <url><loc>https://pinktips.mu/p/lait-d-abricot-carre-court/</loc></url>
+  <url><loc>https://pinktips.mu/p/bordeaux-mains-et-pieds-set-complet/</loc></url>
+  <url><loc>https://pinktips.mu/p/oeil-de-chat-automne-carre-court/</loc></url>
+  <url><loc>https://pinktips.mu/p/french-y2k-amande/</loc></url>
+  <url><loc>https://pinktips.mu/p/bordeaux-paillete-amande/</loc></url>
+  <url><loc>https://pinktips.mu/p/french-osmanthus-court/</loc></url>
+  <url><loc>https://pinktips.mu/p/bordeaux-et-strass-pieds/</loc></url>
+  <url><loc>https://pinktips.mu/p/bordeaux-oeil-de-chat-pieds/</loc></url>
+  <url><loc>https://pinktips.mu/p/french-rose-carre/</loc></url>
 </urlset>
