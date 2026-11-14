@@ -6,7 +6,8 @@ let items = [];
 let editing = null; // product being edited, or {} for a new one
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const thumb = (u) => (u.includes("images.unsplash.com") ? u.split("?")[0] + "?auto=format&fit=crop&w=160&h=160&q=60" : u);
+const thumb = (u) => (u.includes("images.unsplash.com") ? u.split("?")[0] + "?auto=format&fit=crop&w=160&h=160&q=60"
+  : u.includes("googleusercontent.com/d/") ? u.split("=")[0] + "=w300-h300-c" : u);
 
 function toast(text, bad) {
   const t = $("#toast");
@@ -126,3 +127,19 @@ $("#delBtn").onclick = async () => {
   try { await api("delete", { row: editing.row, expect: editing.name }); toast("Produit supprimé"); }
   catch (e) { toast("Erreur, réessayez.", true); }
 };
+
+// ---------- photo upload: shrink to 1000 px JPEG in the browser, the script stores it in Drive ----------
+$("#file").addEventListener("change", async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const msg = $("#upMsg"); msg.textContent = "Envoi…"; $("#saveBtn").disabled = true;
+  try {
+    const bmp = await createImageBitmap(f);
+    const k = Math.min(1, 1000 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const data = c.toDataURL("image/jpeg", 0.85).split(",")[1];
+    const r = await api("upload", { data });
+    form.photo.value = r.url; showPreview(); msg.textContent = "Photo envoyée ✓";
+  } catch (err) { msg.textContent = "Échec de l'envoi, réessayez."; }
+  $("#saveBtn").disabled = false; e.target.value = "";
+});

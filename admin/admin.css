@@ -58,3 +58,7 @@ dialog label input { margin-top: .25rem; }
   font-size: .9rem; transition: transform .3s, visibility .3s; z-index: 20; visibility: hidden; }
 .toast.show { transform: translate(-50%, 0); visibility: visible; }
 .toast.bad { background: #b3261e; }
+
+[hidden] { display: none !important; } /* .login's display:grid otherwise keeps the sign-in screen visible after login */
+.pick { display: inline-block; margin: .3rem 0 0; cursor: pointer; }
+.pick input { display: none; }

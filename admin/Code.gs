@@ -36,6 +36,15 @@ function doPost(e) {
   const pw = PropertiesService.getScriptProperties().getProperty("ADMIN_PASSWORD");
   if (!pw || req.password !== pw) { Utilities.sleep(1500); return out({ ok: false, error: "password" }); }
 
+  if (req.action === "upload") {
+    if (typeof req.data !== "string" || req.data.length > 4000000) return out({ ok: false, error: "size" });
+    const blob = Utilities.newBlob(Utilities.base64Decode(req.data), "image/jpeg", "pinktips-" + Date.now() + ".jpg");
+    const it = DriveApp.getFoldersByName("Pinktips photos");
+    const file = (it.hasNext() ? it.next() : DriveApp.createFolder("Pinktips photos")).createFile(blob);
+    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    return out({ ok: true, url: "https://lh3.googleusercontent.com/d/" + file.getId() });
+  }
+
   const sh = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET);
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
