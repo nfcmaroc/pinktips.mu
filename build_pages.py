@@ -234,7 +234,8 @@ def landing(lang, key):
             + f"<h2>{esc(grid_h)}</h2>\n" + grid(items, lang)
             + f"<h2>{esc(how_h)}</h2>\n<ol class=\"steps3\">" + "".join(f"<li>{esc(x)}</li>" for x in how) + "</ol>\n"
             + f"<h2>{esc(faq_h)}</h2>\n" + "".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>\n" for q, a in faq)
-            + f'<p>{other_h} : {other} · <a href="/retours/">{ret}</a></p>\n</main>\n' + footer(lang))
+            + f'<p>{other_h} : {other} · <a href="/retours/">{ret}</a></p>\n</main>\n'
+            + '<script src="/config.js" defer></script><script src="/pages.js" defer></script>\n' + footer(lang))
     write(url.strip("/") + "/index.html", body)
     return url
 
@@ -299,7 +300,7 @@ def product_page(p, i):
             + f'<ul class="facts">{facts}</ul>\n</div>\n</div>\n'
             + "<h2>" + bi("Vous aimerez aussi", "You may also like") + "</h2>\n" + grid(others, "fr")
             + f'<p>{bi("Voir aussi", "See also")} : <a href="{LAND["main"][0]}">faux ongles press-on à l\'île Maurice</a> · <a href="{LAND["main"][1]}">press-on nails in Mauritius</a></p>\n</main>\n'
-            + '<script src="/config.js" defer></script><script src="/product.js" defer></script>\n' + footer("fr"))
+            + '<script src="/config.js" defer></script><script src="/product.js" defer></script><script src="/pages.js" defer></script>\n' + footer("fr"))
     write(url.strip("/") + "/index.html", body)
     return url
 
