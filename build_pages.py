@@ -46,7 +46,38 @@ for r in list(csv.reader(io.StringIO(raw)))[1:]:
         "feet": "pieds" in (name + " " + var).lower(),
     })
 assert products, "no products read from the sheet"
-prices = [p["price"] for p in products]
+
+
+def localize(p):
+    """Photos uploaded through the admin page live on Google Drive. Copy each one into img/products/
+    (1000 px JPEG + 400/800 px WebP, same as the older photos) so pages stay fast and independent of Drive.
+    The file name carries the Drive id, so uploading a new photo for a product makes a new file."""
+    m = re.search(r"googleusercontent\.com/d/([\w-]+)", p["photo"])
+    if not m or p["base"]:
+        return
+    base = f"{p['slug']}-{m.group(1)[:8].lower()}"
+    dest = "img/products/" + base
+    if not os.path.exists(dest + ".jpg"):
+        try:
+            from PIL import Image
+            req = urllib.request.Request(f"https://lh3.googleusercontent.com/d/{m.group(1)}=w1000", headers={"User-Agent": "Mozilla/5.0"})
+            im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=60).read())).convert("RGB")
+            im.thumbnail((1000, 1000))
+            im.save(dest + ".jpg", "JPEG", quality=85, optimize=True)  # re-encoded: no EXIF/location left
+            for w in (400, 800):
+                small = im.copy()
+                small.thumbnail((w, w))
+                small.save(f"{dest}-{w}.webp", "WEBP", quality=80)
+            print("copied photo", base)
+        except Exception as e:  # keep the Drive link: the page still works, just not optimised
+            print("photo not copied:", p["slug"], e)
+            return
+    p["base"] = base
+
+
+for _p in products:
+    localize(_p)
+prices =[p["price"] for p in products]
 PMIN, PMAX = min(prices), max(prices)
 
 
