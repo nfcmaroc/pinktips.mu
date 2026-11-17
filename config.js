@@ -19,6 +19,6 @@ const CONFIG = {
   // Google Analytics 4 Measurement ID (analytics.google.com > Admin > Data streams). Empty = off.
   analytics: "G-3HSSHNN15C",
 
-  metaPixel: "",
+  metaPixel: "1186006247095459",
   tiktokPixel: "",
 };
