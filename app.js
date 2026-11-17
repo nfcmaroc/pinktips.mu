@@ -217,8 +217,10 @@ document.addEventListener("keydown", (e) => e.key === "Escape" && (setOpen(false
 
 $("#checkout").addEventListener("submit", (e) => {
   e.preventDefault();
-  const { sub } = renderCart();
+  const { items, sub } = renderCart();
   track("whatsapp_click", { value: sub, currency: "MUR" });
+  // Meta Purchase = the customer sent the order on WhatsApp (payment is made afterwards, outside the site)
+  if (window.fbq) fbq("track", "Purchase", { value: sub + fee(), currency: "MUR", content_type: "product", content_ids: items.map(({ p }) => p.id), num_items: items.reduce((n, { q }) => n + q, 0) });
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(whatsappMessage(e.target))}`, "_blank");
 });
 

@@ -300,7 +300,18 @@ def product_page(p, i):
         "brand": {"@type": "Brand", "name": "Pink Tips"},
         "offers": {"@type": "Offer", "url": SITE + url, "priceCurrency": "MUR", "price": str(p["price"]),
                    "availability": "https://schema.org/OutOfStock" if p["out"] else "https://schema.org/InStock",
-                   "itemCondition": "https://schema.org/NewCondition", "seller": {"@type": "Organization", "name": "Pink Tips"}},
+                   "itemCondition": "https://schema.org/NewCondition", "seller": {"@type": "Organization", "name": "Pink Tips"},
+                   # same facts as the Merchant Center shipping/return settings and the /retours/ page
+                   "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "MU",
+                       "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 7,
+                       "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn",
+                       "merchantReturnLink": SITE + "/retours/"},
+                   "shippingDetails": {"@type": "OfferShippingDetails",
+                       "shippingRate": {"@type": "MonetaryAmount", "value": "100", "currency": "MUR"},
+                       "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "MU"},
+                       "deliveryTime": {"@type": "ShippingDeliveryTime",
+                           "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"},
+                           "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY"}}}},
     }, breadcrumb_ld("fr", [(land_fr, "Faux ongles pour les pieds" if p["feet"] else "Faux ongles press-on Maurice"), (None, core)], url)]
     others = [products[(i + k) % len(products)] for k in (1, 2, 3, 4)]
     msg_fr = f"Bonjour Pinktips ! Je voudrais commander : 1 × {p['name']}{var} – Rs {p['price']}"
