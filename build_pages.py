@@ -358,6 +358,17 @@ for key in ("main", "toes"):
             urls[(key, lang)] = u
 purls = [product_page(p, i) for i, p in enumerate(products)]
 
+# Product pages Google already crawled under their old names. GitHub Pages cannot send a 301, so each old
+# address gets a tiny page that redirects at once and names the new page as canonical.
+OLD_URLS = {"/p/burgendy-cateye-square/": "/p/oeil-de-chat-bordeaux-carre/",
+            "/p/colorful-cateye-french-square/": "/p/french-oeil-de-chat-multicolore-carre/"}
+for old, new in OLD_URLS.items():
+    if new in purls:
+        write(old.strip("/") + "/index.html",
+              f'<!doctype html><html lang="fr"><meta charset="utf-8"><title>Pink Tips</title>'
+              f'<link rel="canonical" href="{SITE}{new}"><meta http-equiv="refresh" content="0;url={new}">'
+              f'<p><a href="{new}">Pink Tips</a></p></html>\n')
+
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
       f"  <url><loc>{SITE}/</loc><changefreq>weekly</changefreq></url>", f"  <url><loc>{SITE}/retours/</loc></url>"]
 for key in ("main", "toes"):
